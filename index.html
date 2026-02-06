@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0077be 0%, #00c9ff 50%, #92fe9d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Ocean waves animation */
+        body::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 C300,100 500,0 800,50 C1100,100 1200,50 1200,50 L1200,120 L0,120 Z" fill="%23ffffff" opacity="0.3"/></svg>') repeat-x;
+            background-size: 1200px 120px;
+            animation: wave 10s linear infinite;
+            opacity: 0.5;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,70 C400,20 600,120 1000,70 C1200,50 1200,70 1200,70 L1200,120 L0,120 Z" fill="%23ffffff" opacity="0.2"/></svg>') repeat-x;
+            background-size: 1200px 120px;
+            animation: wave 15s linear infinite reverse;
+            opacity: 0.3;
+        }
+
+        @keyframes wave {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 1200px 0;
+            }
+        }
+
+        /* Floating ocean elements animation */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 15s infinite;
+            opacity: 0.7;
+        }
+
+        .dolphin {
+            animation: swim 20s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes swim {
+            0% {
+                transform: translate(-100px, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            50% {
+                transform: translate(50vw, 50vh) rotate(-20deg);
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(100vw, -100px) rotate(20deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Photo section */
+        .photo-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #ff6b6b;
+            box-shadow: 0 10px 30px rgba(0, 194, 203, 0.5);
+            animation: pulse 2s infinite;
+            background: linear-gradient(135deg, #e0f7ff, #b3f0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0, 194, 203, 0.5);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(0, 194, 203, 0.8);
+            }
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            font-size: 80px;
+            color: #00c9ff;
+        }
+
+        /* Title */
+        h1 {
+            color: #0077be;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 119, 190, 0.3);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.05);
+            }
+            20%, 40% {
+                transform: scale(1);
+            }
+        }
+
+        .subtitle {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Buttons container */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 40px;
+            position: relative;
+            min-height: 150px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 200px;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+            color: white;
+            position: relative;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 201, 255, 0.5);
+        }
+
+        #noBtn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            color: white;
+            position: absolute;
+            top: 80px;
+        }
+
+        #noBtn:hover {
+            /* No hover effect - button will move before hover completes */
+        }
+
+        /* Success message */
+        .success {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .success h2 {
+            color: #0077be;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .celebration {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .message {
+            font-size: 1.3em;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #00c9ff;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Bubbles animation */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+            border-radius: 50%;
+            animation: rise 8s infinite ease-in;
+            opacity: 0.6;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Upload hint */
+        .upload-hint {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="heart-bg" id="heartBg"></div>
+
+    <div class="container">
+        <div id="question">
+            <!-- Photo section -->
+            <div class="photo-container">
+                <div class="photo-frame" id="photoFrame">
+                    <div class="photo-placeholder">🐚</div>
+                </div>
+                <div class="upload-hint">
+                    Click to upload your photo
+                </div>
+                <input type="file" id="photoUpload" accept="image/*" style="display: none;">
+            </div>
+
+            <h1>Will You Be My Valentine? 🌊💙</h1>
+            <p class="subtitle">Dive into this adventure with me...</p>
+            
+            <div class="buttons">
+                <button id="yesBtn">Yes! 💕</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div class="success" id="success">
+            <div class="celebration">🌊💙</div>
+            <h2>YAYYYY! 🎉</h2>
+            <p class="message">
+                You just made me the happiest person in the world! 
+                <br><br>
+                I can't wait to spend this Valentine's Day with you! 💕
+                <br><br>
+                Get ready for the best day ever! 🌹
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating ocean elements
+        const heartBg = document.getElementById('heartBg');
+        const oceanElements = ['⭐', '🐚', '🐠', '🐟', '🦀', '🌊'];
+        const dolphins = ['🐬', '🐋'];
+        
+        function createOceanElement() {
+            const element = document.createElement('div');
+            element.className = 'heart';
+            element.textContent = oceanElements[Math.floor(Math.random() * oceanElements.length)];
+            element.style.left = Math.random() * 100 + '%';
+            element.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            element.style.animationDelay = Math.random() * 5 + 's';
+            heartBg.appendChild(element);
+            
+            setTimeout(() => element.remove(), 20000);
+        }
+
+        function createDolphin() {
+            const dolphin = document.createElement('div');
+            dolphin.className = 'heart dolphin';
+            dolphin.textContent = dolphins[Math.floor(Math.random() * dolphins.length)];
+            dolphin.style.left = '-50px';
+            dolphin.style.fontSize = '50px';
+            dolphin.style.animationDuration = (Math.random() * 5 + 15) + 's';
+            heartBg.appendChild(dolphin);
+            
+            setTimeout(() => dolphin.remove(), 25000);
+        }
+
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 30 + 10;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            bubble.style.animationDelay = Math.random() * 3 + 's';
+            heartBg.appendChild(bubble);
+            
+            setTimeout(() => bubble.remove(), 15000);
+        }
+
+        // Create ocean elements periodically
+        setInterval(createOceanElement, 500);
+        setInterval(createDolphin, 4000);
+        setInterval(createBubble, 800);
+        
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createOceanElement, i * 200);
+        }
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createBubble, i * 300);
+        }
+        setTimeout(createDolphin, 2000);
+
+        // Photo upload functionality
+        const photoFrame = document.getElementById('photoFrame');
+        const photoUpload = document.getElementById('photoUpload');
+
+        photoFrame.addEventListener('click', () => {
+            photoUpload.click();
+        });
+
+        photoUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    photoFrame.innerHTML = `<img src="${event.target.result}" alt="Our photo">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Button functionality
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const success = document.getElementById('success');
+
+        // Yes button
+        yesBtn.addEventListener('click', () => {
+            question.style.display = 'none';
+            success.style.display = 'block';
+            
+            // Create confetti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = ['#00c9ff', '#92fe9d', '#0077be', '#4fc3f7'][Math.floor(Math.random() * 4)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        });
+
+        // No button - moves away when mouse gets close
+        let noBtnPosition = { x: 0, y: 0 };
+        
+        function moveNoButton() {
+            const container = document.querySelector('.buttons');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Random position within a safe area
+            const maxX = 200;
+            const maxY = 100;
+            
+            noBtnPosition.x = (Math.random() - 0.5) * maxX;
+            noBtnPosition.y = (Math.random() - 0.5) * maxY;
+            
+            noBtn.style.transform = `translate(${noBtnPosition.x}px, ${noBtnPosition.y}px)`;
+        }
+
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+
+        // Also move on click attempt
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+        });
+    </script>
+</body>
+</html>
